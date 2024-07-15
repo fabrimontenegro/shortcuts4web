@@ -1,0 +1,87 @@
+.s4w-tooltip-label{
+    font-weight: 300;
+    color: #ffffff;
+    background-color: #B190CF;
+    border: 1px solid #6E498F;
+    min-height: 10px;
+    min-width: 10px;
+    padding: 2px;
+    display: inline;
+    position: absolute; 
+    font-size: 11px;
+    z-index: 9999; 
+    white-space: nowrap;
+    cursor:default;
+    line-height:12px;
+}
+
+.s4w-tooltip-label-close{    
+    background-color: #7e6199;
+    margin-left: 3px;
+    color: #dcdcdc;    
+    min-width: 18px;    
+    display: inline-block;
+    text-align: center;
+}
+
+.s4w-tooltip-label-close:hover{    
+    background-color: #420b76;        
+}
+
+.s4w-shortcut-list-base{
+    width:400px;
+    background-color: #FAF2FF;
+    border:1px solid #6E498F;
+    position:fixed;
+    top:5px;
+    right:5px;
+    bottom:5px;
+    font-size: 12px;
+    color:#333333;
+}
+.s4w-shortcut-list-title-bar{
+    width:100%;
+    height: 25px;
+    background-color: #B190CF;
+    text-align: center;
+    color:#ffffff;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 25px;
+    position:relative;
+}
+.s4w-shortcut-list-close{    
+    font-weight: normal; 
+    cursor: default;
+    width:25px;
+    height:22px;
+    position:absolute;
+    right:1px;
+    top:1px;
+    display: inline-block;
+    background-color: #7e6199;
+    color: #dcdcdc;
+    text-align: center;
+    line-height: 21px
+}
+
+.s4w-shortcut-list-close:hover{    
+    background-color: #420b76;        
+}
+
+.s4w-shortcut-list-content{
+    position: absolute;
+    top: 29px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+}
+
+.s4w-shortcut-list-item{
+    margin: 14px 0;
+}
+
+.s4w-shortcut-list-item-keys{
+    font-weight: bold;
+}

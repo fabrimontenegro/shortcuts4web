@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Dialog - Default functionality</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="../../css/shortcuts4web.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script src="../../src/S4W.js" async></script>
+  <script>
+  $( function() {
+    
+    s = Subscriber.instance();
+
+    var keyComb = { altKey: false, code: "Enter", ctrlKey: true, metaKey: false, shiftKey: true };
+    let eleBtnByIdClick = HTMLElementReference.createById("btn-click-me");        
+    var actClickBtn = new ClickHTMLElementAction(eleBtnByIdClick);        
+    s.addSubcription({ keyCombination: keyComb, actionList: [actClickBtn] });
+    
+    
+    $( "#dialog" ).dialog();
+  } );
+  </script>
+</head>
+<body>
+ 
+<div id="dialog" title="Dialog example">
+  <h1>This exemple is under contruction</h1>
+  <p>This button has a Shortcut key associated wich only is available while this dialog is shown</p>
+  <p>Press Ctrl + Shift + K to see the shortcut label</p>
+  <b>
+    <button id="btn-click-me" onclick="alert('button clicked!')">Click me</button>
+  </b>
+</div>
+ 
+ 
+</body>
+</html>

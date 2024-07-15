@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change colors example - Shortcuts4Web</title>
+    <script src="../../src/S4W.js" async></script>
+    <link rel="stylesheet" type="text/css" href="../../css/shortcuts4web.css">
+</head>
+<body style="font-family:Verdana, Geneva, Tahoma, sans-serif;background: rgb(232 231 249);"></body>
+   <div>
+    <table style="border-spacing: 15px; border-collapse: separate;">
+        <tr>
+            <td style="width:110px"><div id="coloredRectangle" style="width: 100px; height: 100px;background-color: #ccc;"></div></td>
+            <td>
+                <table style="border-spacing: 15px; border-collapse: separate;">
+                    <tr><td><button id="btnBlue" onclick="turnColor('#0000aa')">Turn blue</button></td></tr>
+                    <tr><td><button id="btnGreen" onclick="turnColor('#00aa00')">Turn green</button></td></tr>
+                    <tr><td><button id="btnRed" onclick="turnColor('#aa0000')">Turn red</button></td></tr>
+                </table>                                
+            </td>
+        </tr>        
+    </table> 
+    <p>
+        This web is intended to show the S4W (Shortcuts for Web) library capabilities
+    </p>
+    <p>
+        Press <b>Ctrl + Shift + K</b> to show shortcuts inline
+    </p>
+    <p>
+        Press <b>Ctrl + Shift + L</b> to show the list of shortcuts
+    </p>    
+   </div>
+   
+
+    <script type="text/javascript">
+        var shortcutListVisible = false;
+        window.onload = (()=>{            
+            subcribeEvents();
+        })
+        
+        function subcribeEvents(){
+            S4W.addShortcut({code:'KeyB', ctrlKey:true, shiftKey: true}, 'Change blue')
+                .addClickHTMLElement(S4W.elementById('btnBlue'));
+            S4W.addShortcut({code:'KeyG', ctrlKey:true, shiftKey: true}, 'Change green')
+                .addClickHTMLElement(S4W.elementById('btnGreen'));
+            S4W.addShortcut({code:'KeyR', ctrlKey:true, shiftKey: true}, 'Change red')
+                .addClickHTMLElement(S4W.elementById('btnRed'));        
+            S4W.setActive(true);
+        }
+
+        function turnColor(color){
+            document.getElementById('coloredRectangle').style.backgroundColor = color;
+        }        
+    </script>
+</body>
+</html>

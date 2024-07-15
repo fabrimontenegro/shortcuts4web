@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translator example - Shortcuts4Web</title>
+    <script src="../../src/S4W.js" async></script>
+    <link rel="stylesheet" type="text/css" href="../../css/shortcuts4web.css">
+</head>
+<body style="font-family:Verdana, Geneva, Tahoma, sans-serif;background: rgb(232 231 249);">
+   <div>
+    <table style="border-spacing: 15px; border-collapse: separate;">
+        <tr>
+            <td style="width:110px">
+                <label for="ENES"><input type="radio" value="ENES" id="ENES" name="lang" onclick="clickChangeLang()"/>English-Spanish</label>
+                <p>
+                <label for="ESEN"><input type="radio" value="ESEN" id="ESEN" name="lang" onclick="clickChangeLang()"/>Spanish-English</label>
+            </td>
+            <td style="vertical-align: bottom;">
+                <button id="btnTranslate" onclick="translateText()">Translate!</button>
+            </td>
+        </tr>
+        <tr>
+           <td>
+                <div>From Text</div>
+                <div><textarea id="fromText" rows="10" cols="50"></textarea></div>
+           </td>
+           <td>
+                <div>Translation</div>
+                <div><textarea id="translation" rows="10" cols="50" disabled="disabled"></textarea></div>
+           </td>
+        </tr>
+        <tr>
+           <td>&nbsp;</td>
+           <td><button id="btnCopy" onclick="copy()">Copy to clipboard</button></td>
+        </tr>
+    </table>    
+    <p>
+        This web is intended to show the S4W (Shortcuts for Web) library capabilities
+    </p>
+    <p>
+        Press <b>Ctrl + Shift + K</b> to show shortcuts inline
+    </p>
+    <p>
+        Press <b>Ctrl + Shift + L</b> to show the list of shortcuts
+    </p>      
+   </div>
+   
+
+    <script type="text/javascript">
+        var shortcutListVisible = false;
+        var exampleTextES = 'Hola mundo!';
+        var exampleTextEN = 'Hello world!';        
+        window.onload = (()=>{               
+            subcribeEvents();
+        })
+        
+        function subcribeEvents(){
+            S4W.addShortcut({code:'KeyE', ctrlKey:true, shiftKey: true}, 'Select English to Spanish translation')
+                .addClickHTMLElement(S4W.elementById('ENES'));
+            S4W.addShortcut({code:'KeyS', ctrlKey:true, shiftKey: true}, 'Select Spanish to English translation')
+                .addClickHTMLElement(S4W.elementById('ESEN'));
+            S4W.addShortcut({code:'Enter', ctrlKey:true, shiftKey: true}, 'Push the translate button')
+                .addClickHTMLElement(S4W.elementById('btnTranslate').tooltipOptions(S4W_TOOLTIP_RIGHT));
+            S4W.addShortcut({code:'KeyF', ctrlKey:true, shiftKey: true}, 'Set focus on the from text')
+                .addFocusHTMLElement(S4W.elementById('fromText'));
+            S4W.addShortcut({code:'KeyC', ctrlKey:true, shiftKey: true}, 'Push copy to clipboard button')
+                .addClickHTMLElement(S4W.elementById('btnCopy').tooltipOptions(S4W_TOOLTIP_RIGHT));            
+            S4W.setActive(true);
+            reset();
+        }
+
+        function reset(){
+            document.getElementById('ENES').checked = true;
+            document.getElementById('fromText').value = exampleTextEN;
+        }
+
+        function clickChangeLang(translation){
+            var fromText;
+            if (document.getElementById('ENES').checked){
+                fromText = exampleTextEN;
+            }else{
+                fromText = exampleTextES;
+            }
+            document.getElementById('fromText').value = fromText;
+        }
+
+        function translateText(){
+            var text = document.getElementById('fromText').value;            
+            var translated = "I am sorry, I can't translate this phrase. This web is a example of use of S4W (Shortcuts for Web), not a real translator";
+            if (document.getElementById('ENES').checked){
+                // From English to Spanish
+                if (text == exampleTextEN){
+                    translated = exampleTextES;
+                }
+            }else{
+                // From Spanish to English
+                if (text == exampleTextES){
+                    translated = exampleTextEN;
+                }
+            }
+            document.getElementById('translation').value = translated;
+        }
+
+        async function copy(){
+            var translation = document.getElementById('translation').value;
+            if (navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(translation);
+                alert('Copied to clipboard! text: ' + translation);
+            }else{
+                alert('Sorry, it isn\'t possible to copy to clipboard');
+            }
+        }
+        
+    </script>
+</body>
+</html>

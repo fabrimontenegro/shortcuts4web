@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Four buttons - Shortcuts4Web</title>
+    <script src="../../src/S4W.js" async></script>
+    <link rel="stylesheet" type="text/css" href="../../css/shortcuts4web.css">
+</head>
+<body style="font-family:Verdana, Geneva, Tahoma, sans-serif;background: rgb(232 231 249);">
+   <table style="width: 800px;margin: 100px">
+    <tr>
+        <td style="width: 400px;height:100px"><button id="btnA" onclick="alert('Click on Button A (tooltip above)')">Button A (tooltip above)</button></td><td style="width: 400px"><button id="btnB" onclick="alert('Click on Button B (tooltip right)')">Button B (tooltip right)</button></td>
+    </tr>
+    <tr>
+        <td style="width: 400px;height:100px"><button id="btnC" onclick="alert('Click on Button C (tooltip below)')">Button C (tooltip below)</button></td><td><button id="btnD" onclick="alert('Click on Button D (tooltip left)')">Button D (tooltip left)</button></td>
+    </tr>    
+   </table>
+   <p>
+    This web is intended to show the S4W (Shortcuts for Web) library capabilities
+    </p>
+    <p>
+        Press <b>Ctrl + Shift + K</b> to show shortcuts inline, each button's tooltip will be located in diferent mode
+    </p>
+    <p>
+        Press <b>Ctrl + Shift + L</b> to show the list of shortcuts
+    </p>  
+   <script>
+        window.onload = (()=>{              
+            subcribeEvents();
+        })
+        
+        function subcribeEvents(){
+            S4W.addShortcut({code:'KeyA', ctrlKey:true, shiftKey: true}, 'Click button A')
+                .addClickHTMLElement(S4W.elementById('btnA').tooltipOptions(S4W_TOOLTIP_TOP, 3, 5));
+            S4W.addShortcut({code:'KeyB', ctrlKey:true, shiftKey: true}, 'Click button B')
+                .addClickHTMLElement(S4W.elementById('btnB').tooltipOptions(S4W_TOOLTIP_RIGHT, -3, 2));
+            S4W.addShortcut({code:'KeyC', ctrlKey:true, shiftKey: true}, 'Click button C')
+                .addClickHTMLElement(S4W.elementById('btnC').tooltipOptions(S4W_TOOLTIP_BOTTOM, 3, -2));
+            S4W.addShortcut({code:'KeyD', ctrlKey:true, shiftKey: true}, 'Click button D')
+                .addClickHTMLElement(S4W.elementById('btnD').tooltipOptions(S4W_TOOLTIP_LEFT, 3, 2));            
+            S4W.setActive(true);
+        }
+    </script>     
+</body>
