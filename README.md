@@ -82,7 +82,7 @@ It was developed with TypeScript, you can choice what JS version to target (see 
     })
     
     function subcribeEvents(){
-        S4W.addShortcut({code:'KeyH', ctrlKey:true, shiftKey: true}, 'Click button Say Hello')
+        S4W.addShortcut({code:'KeyB', ctrlKey:true, shiftKey: true}, 'Click button Say Hello')
             .addClickHTMLElement(S4W.elementById('btnSayHello'));
         S4W.setActive(true);
     }
@@ -90,7 +90,7 @@ It was developed with TypeScript, you can choice what JS version to target (see 
 
 ```
 
-This simple example will bind the Ctrl + Shift + "H" shortcut to click on the button action.
+This simple example will bind the Ctrl + Shift + "B" shortcut to click on the button action.
 
 The library is well documented on its wiki and has three examples that you can use to learn how to use it.
 
