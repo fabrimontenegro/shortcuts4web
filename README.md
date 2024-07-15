@@ -102,3 +102,11 @@ You may want to edit this library to adapt it to your projects, in which case yo
 
 You can see the detailed information about this library in its [wiki](https://github.com/fabrimontenegro/shortcuts4web/wiki/S4W-%E2%80%90-Shortcuts-For-Web)
 
+
+## Why did I make this library?
+
+I have been using computers for many years, I have used many desktop applications that make work much easier using shortcuts. This is missing on the web, there are shortcuts for the browser itself, but not for specific parts of the web.
+
+There are websites that I use daily that I would like to have shortcuts for actions such as pressing a certain menu option, putting focus on a text box or opening a search engine within it. I've looked for libraries that do this but couldn't find any.
+
+I hope this is useful for people who have to do repetitive tasks on websites they visit frequently.
