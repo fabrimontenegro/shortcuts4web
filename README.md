@@ -92,7 +92,7 @@ Add the next JavaScript code to your project:
 
 The library is well documented and has three examples that you can use to learn how to use it.
 
-## Modify an recomplile
+## Modify and recomplile
 
 You may want to edit this library to adapt it to your projects, in which case you can make these changes:
 * Change the behavior, modifying the s4w.js file directly, or better by modifying the s4w.ts file that when compiled using typescript (tsc command) will regenerate the s4w.js file. You can define which version of javascript to compile with the "target" parameter of tsconfig.json.
