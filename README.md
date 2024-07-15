@@ -4,13 +4,13 @@ S4W - Shortcuts For Web creates keyboard shortcuts to execute actions on your we
 
 For example, you can assign the Ctrl + Shift + "B" key shortcut to click on a button with de following code:
 
-`
+```
 
 S4W.addShortcut({ctrlKey:true, shiftKey: true, code:'KeyB'}, 'Click the button')
         .addClickHTMLElement(S4W.elementById('myButton'));
     S4W.setActive(true);
 
-`
+```
 
 This library can show/hide the shortcuts on its elements by calling explicitly a JavaScript function or the user can do it by pressing Ctrl + Shift + K:
 
@@ -50,32 +50,31 @@ It was developed with TypeScript, you can choice what JS version to target (see 
 ## Getting started
 
 Add the S4W.js file:
-
-`
+```
 
 <script src="src/S4W.js"></script>
 
-`
+```
 
 Add the css classes:
-`
+```
 
 <link rel="stylesheet" href="css/shortcuts4web.css">
 
-`
+```
 
 This simple example will bind the Ctrl + Shift + "H" shortcut to a button click action.
 Add a button with an id attribute:
 
-`
-
+```
 <button id="btnSayHello" onclick="alert('Hello!')">Say Hello</button>
 
-`
+```
+
 
 Add the next JavaScript code to your project:
 
-`
+```
 
 <script>
     window.onload = (()=>{
@@ -89,7 +88,7 @@ Add the next JavaScript code to your project:
     }
 </script>
 
-`
+```
 
 The library is well documented and has three examples that you can use to learn how to use it.
 
