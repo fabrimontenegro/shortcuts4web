@@ -49,30 +49,30 @@ It was developed with TypeScript, you can choice what JS version to target (see 
 
 ## Getting started
 
-Add the S4W.js file:
+1. Download the library.
+
+2. Add the S4W.js file:
 ```
 
 <script src="src/S4W.js"></script>
 
 ```
 
-Add the css classes:
+3. Add the css classes:
 ```
 
 <link rel="stylesheet" href="css/shortcuts4web.css">
 
 ```
 
-This simple example will bind the Ctrl + Shift + "H" shortcut to a button click action.
-Add a button with an id attribute:
+4. Add a button with an id attribute (for example):
 
 ```
 <button id="btnSayHello" onclick="alert('Hello!')">Say Hello</button>
 
 ```
 
-
-Add the next JavaScript code to your project:
+5. Add the next JavaScript code to your project:
 
 ```
 
@@ -90,7 +90,9 @@ Add the next JavaScript code to your project:
 
 ```
 
-The library is well documented and has three examples that you can use to learn how to use it.
+This simple example will bind the Ctrl + Shift + "H" shortcut to click on the button action.
+
+The library is well documented on its wiki and has three examples that you can use to learn how to use it.
 
 ## Modify and recomplile the library
 
