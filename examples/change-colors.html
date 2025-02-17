@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Change colors example - Shortcuts4Web</title>
-    <script src="../../src/S4W.js" async></script>
-    <link rel="stylesheet" type="text/css" href="../../css/shortcuts4web.css">
+    <title>Change colors example - Shortcuts4Web</title>    
+    <link rel="stylesheet" type="text/css" href="../css/shortcuts4web.css">
 </head>
 <body style="font-family:Verdana, Geneva, Tahoma, sans-serif;background: rgb(232 231 249);"></body>
    <div>
@@ -32,9 +31,12 @@
         Press <b>Ctrl + Shift + L</b> to show the list of shortcuts
     </p>    
    </div>
-   
-
-    <script type="text/javascript">
+   <hr/>
+   <p>    
+    <a href="index-examples">index-examples</a>
+   </p>
+    <script type="module">
+        import S4W from './../src/S4W.js';
         var shortcutListVisible = false;
         window.onload = (()=>{            
             subcribeEvents();
@@ -48,11 +50,12 @@
             S4W.addShortcut({code:'KeyR', ctrlKey:true, shiftKey: true}, 'Change red')
                 .addClickHTMLElement(S4W.elementById('btnRed'));        
             S4W.setActive(true);
-        }
-
+        }               
+    </script>
+    <script>
         function turnColor(color){
             document.getElementById('coloredRectangle').style.backgroundColor = color;
-        }        
+        }
     </script>
 </body>
 </html>

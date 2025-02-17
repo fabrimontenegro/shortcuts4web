@@ -1,15 +1,20 @@
+
+
 const DEFAULT_KEY_COMBINATION_FOR_TOOLTIPS: IKeyCombination = {ctrlKey: true, altKey: false, shiftKey: true, metaKey: false, code: 'KeyK'};
 const DEFAULT_KEY_COMBINATION_FOR_LIST_SHORTCUTS: IKeyCombination = {ctrlKey: true, altKey: false, shiftKey: true, metaKey: false, code: 'KeyL'};
 
-const S4W_TOOLTIP_TOP = 1;
-const S4W_TOOLTIP_RIGHT = 2;
-const S4W_TOOLTIP_BOTTOM = 3;
-const S4W_TOOLTIP_LEFT = 4;
+export enum S4WToolTipPosition{
+    Top = 1,
+    Right = 2,
+    Bottom = 3,
+    Left = 4
+}
+
 
 enum HTMLElementReferenceType {Element = 1, Id = 2, QuerySelector = 3, TextEquals = 4, TextContains = 5}
 
 class HTMLElementReference{        
-    private tooltipPosition: number = S4W_TOOLTIP_BOTTOM;
+    private tooltipPosition: S4WToolTipPosition = S4WToolTipPosition.Bottom;
     private tooltipOffsetX: number = 0;
     private tooltipOffsetY: number = 0;
 
@@ -157,14 +162,14 @@ class HTMLElementReference{
         return ele;
     }
 
-    public tooltipOptions(tooltipPosition: number, tooltipOffsetX: number = 0, tooltipOffsetY: number = 0){
+    public tooltipOptions(tooltipPosition: S4WToolTipPosition, tooltipOffsetX: number = 0, tooltipOffsetY: number = 0){
         this.tooltipPosition = tooltipPosition;
         this.tooltipOffsetX = tooltipOffsetX;
         this.tooltipOffsetY = tooltipOffsetY;
         return this;
     }
     
-    public getTooltipPosition(){
+    public getTooltipPosition(): S4WToolTipPosition{
         return this.tooltipPosition;
     }
     
@@ -452,7 +457,7 @@ class S4WTooltipsRenderer{
         }
     }
 
-    private renderTooltipHTMLElement = (keyCombination: IKeyCombination, element: HTMLElement, tooltipPosition, tooltipOffsetX, tooltipOffsetY, action: IShortcuts4WebAction) =>{
+    private renderTooltipHTMLElement = (keyCombination: IKeyCombination, element: HTMLElement, tooltipPosition: S4WToolTipPosition, tooltipOffsetX: number, tooltipOffsetY: number, action: IShortcuts4WebAction) =>{
         var divLabel = document.createElement("div");
         divLabel.className = "s4w-tooltip-label";       
         var keyCombinationText = S4W.getKeyCombinationText(keyCombination);
@@ -460,19 +465,19 @@ class S4WTooltipsRenderer{
         divLabel.innerText = keyCombinationText + ((actionText > '')? (': ' + actionText): '');       
         var rect = element.getBoundingClientRect();        
         switch(tooltipPosition){
-            case S4W_TOOLTIP_TOP:
+            case S4WToolTipPosition.Top:
                 divLabel.style.bottom = (window.innerHeight - (rect.top + window.scrollY + S4W.defaultTooltipsOffsetY + tooltipOffsetY)) + "px";
                 divLabel.style.left = (rect.left + window.scrollX + S4W.defaultTooltipsOffsetX + tooltipOffsetX) + "px";
                 break;
-            case S4W_TOOLTIP_RIGHT:
+            case S4WToolTipPosition.Right:
                 divLabel.style.top = (rect.top + window.scrollY + S4W.defaultTooltipsOffsetY + tooltipOffsetY) + "px";
                 divLabel.style.left = (rect.left + window.scrollX + rect.width + S4W.defaultTooltipsOffsetX + tooltipOffsetX) + "px";
                 break;
-            case S4W_TOOLTIP_LEFT:
+            case S4WToolTipPosition.Left:
                 divLabel.style.top = (rect.top + window.scrollY + S4W.defaultTooltipsOffsetY + tooltipOffsetY) + "px";
                 divLabel.style.right = (window.innerWidth - (rect.left + window.scrollX + S4W.defaultTooltipsOffsetX + tooltipOffsetX)) + "px";
                 break;
-            case S4W_TOOLTIP_BOTTOM:
+            case S4WToolTipPosition.Bottom:
             default:
                 divLabel.style.top = (rect.top + window.scrollY + rect.height + S4W.defaultTooltipsOffsetY + tooltipOffsetY) + "px";
                 divLabel.style.left = (rect.left + window.scrollX + S4W.defaultTooltipsOffsetX + tooltipOffsetX) + "px";
@@ -602,7 +607,7 @@ class S4WShortcut{
     }
 }
 
-abstract class S4W {
+export default abstract class S4W {
     private static shortcutsList: S4WShortcut[] = [];
     private static active: boolean = false;
     private static keyCombinationForTooltips = DEFAULT_KEY_COMBINATION_FOR_TOOLTIPS;

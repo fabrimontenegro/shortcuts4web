@@ -3,8 +3,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Four buttons - Shortcuts4Web</title>
-    <script src="../../src/S4W.js" async></script>
+    <title>Four buttons - Shortcuts4Web</title>    
     <link rel="stylesheet" type="text/css" href="../../css/shortcuts4web.css">
 </head>
 <body style="font-family:Verdana, Geneva, Tahoma, sans-serif;background: rgb(232 231 249);">
@@ -25,21 +24,26 @@
     <p>
         Press <b>Ctrl + Shift + L</b> to show the list of shortcuts
     </p>  
-   <script>
+    <hr/>
+    <p>    
+     <a href="index-examples">index-examples</a>
+    </p>
+    <script type="module">
+        import S4W, {S4WToolTipPosition} from './../src/S4W.js';
         window.onload = (()=>{              
             subcribeEvents();
         })
         
         function subcribeEvents(){
             S4W.addShortcut({code:'KeyA', ctrlKey:true, shiftKey: true}, 'Click button A')
-                .addClickHTMLElement(S4W.elementById('btnA').tooltipOptions(S4W_TOOLTIP_TOP, 3, 5));
+                .addClickHTMLElement(S4W.elementById('btnA').tooltipOptions(S4WToolTipPosition.Top, 3, 5));
             S4W.addShortcut({code:'KeyB', ctrlKey:true, shiftKey: true}, 'Click button B')
-                .addClickHTMLElement(S4W.elementById('btnB').tooltipOptions(S4W_TOOLTIP_RIGHT, -3, 2));
+                .addClickHTMLElement(S4W.elementById('btnB').tooltipOptions(S4WToolTipPosition.Right, -3, 2));
             S4W.addShortcut({code:'KeyC', ctrlKey:true, shiftKey: true}, 'Click button C')
-                .addClickHTMLElement(S4W.elementById('btnC').tooltipOptions(S4W_TOOLTIP_BOTTOM, 3, -2));
+                .addClickHTMLElement(S4W.elementById('btnC').tooltipOptions(S4WToolTipPosition.Bottom, 3, -2));
             S4W.addShortcut({code:'KeyD', ctrlKey:true, shiftKey: true}, 'Click button D')
-                .addClickHTMLElement(S4W.elementById('btnD').tooltipOptions(S4W_TOOLTIP_LEFT, 3, 2));            
+                .addClickHTMLElement(S4W.elementById('btnD').tooltipOptions(S4WToolTipPosition.Left, 3, 2));            
             S4W.setActive(true);
-        }
-    </script>     
+        }              
+    </script>
 </body>

@@ -1,0 +1,31 @@
+{
+  "name": "shortcuts4web",
+  "version": "1.0.1",
+  "description": "Shortcuts For Web creates keyboard shortcuts to execute actions on your web, like click on a button, focus on a input text element, assign value to a input select element and even execute custom actions.",
+  "main": "S4W.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "http-server \"./\" -p 8080 -o \"examples/index-examples.html\" -c-1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabrimontenegro/shortcuts4web.git"
+  },
+  "keywords": [
+    "Shortcuts",
+    "web",
+    "keyboard",
+    "ui",
+    "keys",
+    "custom"
+  ],
+  "author": "Mario Fabricio Montenegro Boaglio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fabrimontenegro/shortcuts4web/issues"
+  },
+  "homepage": "https://github.com/fabrimontenegro/shortcuts4web#readme",
+  "type": "module"
+}

@@ -1,10 +1,13 @@
 var _a;
 const DEFAULT_KEY_COMBINATION_FOR_TOOLTIPS = { ctrlKey: true, altKey: false, shiftKey: true, metaKey: false, code: 'KeyK' };
 const DEFAULT_KEY_COMBINATION_FOR_LIST_SHORTCUTS = { ctrlKey: true, altKey: false, shiftKey: true, metaKey: false, code: 'KeyL' };
-const S4W_TOOLTIP_TOP = 1;
-const S4W_TOOLTIP_RIGHT = 2;
-const S4W_TOOLTIP_BOTTOM = 3;
-const S4W_TOOLTIP_LEFT = 4;
+export var S4WToolTipPosition;
+(function (S4WToolTipPosition) {
+    S4WToolTipPosition[S4WToolTipPosition["Top"] = 1] = "Top";
+    S4WToolTipPosition[S4WToolTipPosition["Right"] = 2] = "Right";
+    S4WToolTipPosition[S4WToolTipPosition["Bottom"] = 3] = "Bottom";
+    S4WToolTipPosition[S4WToolTipPosition["Left"] = 4] = "Left";
+})(S4WToolTipPosition || (S4WToolTipPosition = {}));
 var HTMLElementReferenceType;
 (function (HTMLElementReferenceType) {
     HTMLElementReferenceType[HTMLElementReferenceType["Element"] = 1] = "Element";
@@ -20,7 +23,7 @@ class HTMLElementReference {
         this.doc = doc;
         this.element = element;
         this.indexQuerySelector = indexQuerySelector;
-        this.tooltipPosition = S4W_TOOLTIP_BOTTOM;
+        this.tooltipPosition = S4WToolTipPosition.Bottom;
         this.tooltipOffsetX = 0;
         this.tooltipOffsetY = 0;
         if (this.doc == null) {
@@ -420,19 +423,19 @@ class S4WTooltipsRenderer {
             divLabel.innerText = keyCombinationText + ((actionText > '') ? (': ' + actionText) : '');
             var rect = element.getBoundingClientRect();
             switch (tooltipPosition) {
-                case S4W_TOOLTIP_TOP:
+                case S4WToolTipPosition.Top:
                     divLabel.style.bottom = (window.innerHeight - (rect.top + window.scrollY + S4W.defaultTooltipsOffsetY + tooltipOffsetY)) + "px";
                     divLabel.style.left = (rect.left + window.scrollX + S4W.defaultTooltipsOffsetX + tooltipOffsetX) + "px";
                     break;
-                case S4W_TOOLTIP_RIGHT:
+                case S4WToolTipPosition.Right:
                     divLabel.style.top = (rect.top + window.scrollY + S4W.defaultTooltipsOffsetY + tooltipOffsetY) + "px";
                     divLabel.style.left = (rect.left + window.scrollX + rect.width + S4W.defaultTooltipsOffsetX + tooltipOffsetX) + "px";
                     break;
-                case S4W_TOOLTIP_LEFT:
+                case S4WToolTipPosition.Left:
                     divLabel.style.top = (rect.top + window.scrollY + S4W.defaultTooltipsOffsetY + tooltipOffsetY) + "px";
                     divLabel.style.right = (window.innerWidth - (rect.left + window.scrollX + S4W.defaultTooltipsOffsetX + tooltipOffsetX)) + "px";
                     break;
-                case S4W_TOOLTIP_BOTTOM:
+                case S4WToolTipPosition.Bottom:
                 default:
                     divLabel.style.top = (rect.top + window.scrollY + rect.height + S4W.defaultTooltipsOffsetY + tooltipOffsetY) + "px";
                     divLabel.style.left = (rect.left + window.scrollX + S4W.defaultTooltipsOffsetX + tooltipOffsetX) + "px";
@@ -787,3 +790,4 @@ S4W.setLang = (lang) => {
         }
     }
 };
+export default S4W;
